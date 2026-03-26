@@ -25,5 +25,16 @@ public class TrainConsistApp {
 
         System.out.println("Bogie added successfully.");
         System.out.println("Updated number of bogies: " + trainConsist.size());
+
+        // UC3: Display train consist
+        System.out.println("\nCurrent Train Consist:");
+
+        if (trainConsist.isEmpty()) {
+            System.out.println("No bogies attached.");
+        } else {
+            for (String b : trainConsist) {
+                System.out.println("- " + b);
+            }
+        }
     }
 }
