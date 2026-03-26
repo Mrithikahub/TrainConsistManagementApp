@@ -1,40 +1,40 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class TrainConsistApp {
 
     public static void main(String[] args) {
 
-        // Welcome message
+        // Welcome message (UC1)
         System.out.println("=== Train Consist Management App ===");
 
         // Initialize train consist
-        List<String> trainConsist = new ArrayList<>();
+        List<String> passengerBogies = new ArrayList<>();
 
         System.out.println("Train consist initialized.");
-        System.out.println("Initial number of bogies: " + trainConsist.size());
+        System.out.println("Initial number of bogies: " + passengerBogies.size());
 
-        // UC2: Add bogie
-        Scanner sc = new Scanner(System.in);
+        // UC2: Add passenger bogies
+        passengerBogies.add("Sleeper");
+        passengerBogies.add("AC Chair");
+        passengerBogies.add("First Class");
 
-        System.out.print("Enter bogie name to add: ");
-        String bogie = sc.nextLine();
+        System.out.println("\nAfter Adding Bogies:");
+        System.out.println(passengerBogies);
 
-        trainConsist.add(bogie);
+        // Remove one bogie
+        passengerBogies.remove("AC Chair");
 
-        System.out.println("Bogie added successfully.");
-        System.out.println("Updated number of bogies: " + trainConsist.size());
+        System.out.println("\nAfter Removing AC Chair:");
+        System.out.println(passengerBogies);
 
-        // UC3: Display train consist
-        System.out.println("\nCurrent Train Consist:");
+        // Check existence
+        boolean exists = passengerBogies.contains("Sleeper");
 
-        if (trainConsist.isEmpty()) {
-            System.out.println("No bogies attached.");
-        } else {
-            for (String b : trainConsist) {
-                System.out.println("- " + b);
-            }
-        }
+        System.out.println("\nDoes Sleeper exist? " + exists);
+
+        // Final state
+        System.out.println("\nFinal Train Consist:");
+        System.out.println(passengerBogies);
     }
 }
