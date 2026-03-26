@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class TrainConsistApp {
 
@@ -11,8 +12,18 @@ public class TrainConsistApp {
         // Initialize train consist
         List<String> trainConsist = new ArrayList<>();
 
-        // Display initial state
         System.out.println("Train consist initialized.");
         System.out.println("Initial number of bogies: " + trainConsist.size());
+
+        // UC2: Add bogie
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter bogie name to add: ");
+        String bogie = sc.nextLine();
+
+        trainConsist.add(bogie);
+
+        System.out.println("Bogie added successfully.");
+        System.out.println("Updated number of bogies: " + trainConsist.size());
     }
 }
