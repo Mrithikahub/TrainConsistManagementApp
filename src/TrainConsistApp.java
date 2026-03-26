@@ -1,57 +1,25 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.LinkedList;
+import java.util.*;
 
 public class TrainConsistApp {
 
     public static void main(String[] args) {
 
-        // UC1 + UC2 + UC3 (existing)
+        // UC1 to UC4 (existing logic)
         System.out.println("=== Train Consist Management App ===");
 
-        List<String> passengerBogies = new ArrayList<>();
-        passengerBogies.add("Sleeper");
-        passengerBogies.add("AC Chair");
-        passengerBogies.add("First Class");
-
-        System.out.println("\nPassenger Bogies:");
-        System.out.println(passengerBogies);
-
-        Set<String> bogieIDs = new HashSet<>();
-        bogieIDs.add("BG101");
-        bogieIDs.add("BG102");
-        bogieIDs.add("BG101"); // duplicate
-        bogieIDs.add("BG103");
-
-        System.out.println("\nUnique Bogie IDs:");
-        System.out.println(bogieIDs);
-
-        // UC4: LinkedList for ordered consist
-        LinkedList<String> train = new LinkedList<>();
+        // UC5: LinkedHashSet for ordered unique bogies
+        LinkedHashSet<String> trainFormation = new LinkedHashSet<>();
 
         // Add bogies
-        train.add("Engine");
-        train.add("Sleeper");
-        train.add("AC");
-        train.add("Cargo");
-        train.add("Guard");
+        trainFormation.add("Engine");
+        trainFormation.add("Sleeper");
+        trainFormation.add("Cargo");
+        trainFormation.add("Guard");
 
-        System.out.println("\nInitial Train:");
-        System.out.println(train);
+        // Add duplicate intentionally
+        trainFormation.add("Sleeper");
 
-        // Insert Pantry at position 2
-        train.add(2, "Pantry");
-
-        System.out.println("\nAfter Adding Pantry at position 2:");
-        System.out.println(train);
-
-        // Remove first and last
-        train.removeFirst();
-        train.removeLast();
-
-        System.out.println("\nAfter Removing First and Last:");
-        System.out.println(train);
+        System.out.println("\nTrain Formation (Ordered & Unique):");
+        System.out.println(trainFormation);
     }
 }
