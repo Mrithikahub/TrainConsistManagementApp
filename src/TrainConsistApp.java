@@ -1,4 +1,4 @@
-// UC15: Safe Cargo Assignment Using try-catch-finally
+import java.util.Arrays;
 
 // Custom Exception
 class InvalidCapacityException extends Exception {
@@ -7,14 +7,6 @@ class InvalidCapacityException extends Exception {
     }
 }
 
-// Runtime Exception for Cargo Safety
-class CargoSafetyException extends RuntimeException {
-    public CargoSafetyException(String message) {
-        super(message);
-    }
-}
-
-// Bogie class
 class Bogie {
     String name;
     int capacity;
@@ -26,70 +18,36 @@ class Bogie {
         this.name = name;
         this.capacity = capacity;
     }
-
-    @Override
-    public String toString() {
-        return name + " -> " + capacity;
-    }
-}
-
-// Goods Bogie
-class GoodsBogie {
-
-    String shape;
-    String cargo;
-
-    GoodsBogie(String shape) {
-        this.shape = shape;
-    }
-
-    void assignCargo(String cargoType) {
-
-        try {
-
-            if (shape.equalsIgnoreCase("Rectangular") &&
-                    cargoType.equalsIgnoreCase("Petroleum")) {
-
-                throw new CargoSafetyException(
-                        "Petroleum cannot be assigned to Rectangular bogie"
-                );
-            }
-
-            cargo = cargoType;
-            System.out.println("Cargo assigned successfully: " + cargo);
-
-        } catch (CargoSafetyException e) {
-
-            System.out.println("Error: " + e.getMessage());
-
-        } finally {
-
-            System.out.println("Cargo assignment validation completed.");
-        }
-    }
 }
 
 public class TrainConsistApp {
 
+    public static void bubbleSort(int[] arr) {
+
+        int n = arr.length;
+
+        for (int i = 0; i < n - 1; i++) {
+
+            for (int j = 0; j < n - i - 1; j++) {
+
+                if (arr[j] > arr[j + 1]) {
+
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+    }
+
     public static void main(String[] args) {
 
-        System.out.println("=== Train Consist Management App ===");
+        System.out.println("=== Bubble Sort Passenger Capacities ===");
 
-        try {
+        int[] capacities = {72, 56, 24, 70, 60};
 
-            Bogie b1 = new Bogie("Sleeper", 72);
-            System.out.println("Created: " + b1);
+        bubbleSort(capacities);
 
-        } catch (InvalidCapacityException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-
-        GoodsBogie g1 = new GoodsBogie("Cylindrical");
-        g1.assignCargo("Petroleum");
-
-        GoodsBogie g2 = new GoodsBogie("Rectangular");
-        g2.assignCargo("Petroleum");
-
-        System.out.println("\nProgram continues safely...");
+        System.out.println("Sorted capacities: " + Arrays.toString(capacities));
     }
 }
