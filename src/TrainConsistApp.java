@@ -1,27 +1,16 @@
-import java.util.Arrays;
-
 public class TrainConsistApp {
 
-    public static boolean binarySearch(String[] ids, String key) {
+    public static boolean search(String[] ids, String key) {
 
-        Arrays.sort(ids);
+        if (ids.length == 0) {
+            throw new IllegalStateException("No bogies available in train.");
+        }
 
-        int low = 0;
-        int high = ids.length - 1;
+        for (String id : ids) {
 
-        while (low <= high) {
-
-            int mid = (low + high) / 2;
-
-            int result = key.compareTo(ids[mid]);
-
-            if (result == 0)
+            if (id.equals(key)) {
                 return true;
-
-            if (result > 0)
-                low = mid + 1;
-            else
-                high = mid - 1;
+            }
         }
 
         return false;
@@ -29,15 +18,15 @@ public class TrainConsistApp {
 
     public static void main(String[] args) {
 
-        System.out.println("=== Binary Search Bogie ID ===");
+        System.out.println("=== Search with Exception Handling ===");
 
-        String[] ids = {"BG309","BG101","BG550","BG205","BG412"};
+        String[] ids = {"BG101","BG205","BG309"};
 
         String key = "BG205";
 
-        boolean found = binarySearch(ids, key);
+        boolean result = search(ids, key);
 
-        if (found)
+        if (result)
             System.out.println("Bogie found.");
         else
             System.out.println("Bogie not found.");
