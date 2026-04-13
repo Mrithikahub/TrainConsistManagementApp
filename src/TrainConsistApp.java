@@ -1,12 +1,27 @@
+import java.util.Arrays;
+
 public class TrainConsistApp {
 
-    public static boolean linearSearch(String[] ids, String key) {
+    public static boolean binarySearch(String[] ids, String key) {
 
-        for (String id : ids) {
+        Arrays.sort(ids);
 
-            if (id.equals(key)) {
+        int low = 0;
+        int high = ids.length - 1;
+
+        while (low <= high) {
+
+            int mid = (low + high) / 2;
+
+            int result = key.compareTo(ids[mid]);
+
+            if (result == 0)
                 return true;
-            }
+
+            if (result > 0)
+                low = mid + 1;
+            else
+                high = mid - 1;
         }
 
         return false;
@@ -14,13 +29,13 @@ public class TrainConsistApp {
 
     public static void main(String[] args) {
 
-        System.out.println("=== Linear Search Bogie ID ===");
+        System.out.println("=== Binary Search Bogie ID ===");
 
-        String[] ids = {"BG101","BG205","BG309","BG412","BG550"};
+        String[] ids = {"BG309","BG101","BG550","BG205","BG412"};
 
-        String searchKey = "BG309";
+        String key = "BG205";
 
-        boolean found = linearSearch(ids, searchKey);
+        boolean found = binarySearch(ids, key);
 
         if (found)
             System.out.println("Bogie found.");
