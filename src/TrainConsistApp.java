@@ -1,21 +1,30 @@
-import java.util.Arrays;
-
 public class TrainConsistApp {
+
+    public static boolean linearSearch(String[] ids, String key) {
+
+        for (String id : ids) {
+
+            if (id.equals(key)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     public static void main(String[] args) {
 
-        System.out.println("=== Sort Bogie Names ===");
+        System.out.println("=== Linear Search Bogie ID ===");
 
-        String[] bogies = {
-                "Sleeper",
-                "AC Chair",
-                "First Class",
-                "General",
-                "Luxury"
-        };
+        String[] ids = {"BG101","BG205","BG309","BG412","BG550"};
 
-        Arrays.sort(bogies);
+        String searchKey = "BG309";
 
-        System.out.println("Sorted bogie names: " + Arrays.toString(bogies));
+        boolean found = linearSearch(ids, searchKey);
+
+        if (found)
+            System.out.println("Bogie found.");
+        else
+            System.out.println("Bogie not found.");
     }
 }
